@@ -19,8 +19,9 @@ vim.keymap.set("v", "<C-v>", '"+p', { noremap = true, silent = true})
 vim.keymap.set("v", "<Tab>", ">gv", { noremap = true, silent = true})
 vim.keymap.set("v", "<S-Tab>", "<gv", { noremap = true, silent = true})
 --Move with arrows
-vim.keymap.set("n", "<A-Down>", "yyjpkkddj", { noremap = true, silent = true})
 vim.keymap.set("n", "<A-Up>", "yykkpjjddkk", { noremap = true, silent = true})
+vim.keymap.set("n", "<A-Down>", "yyjpkkddj", { noremap = true, silent = true})
+vim.keymap.set("v", "<A-Down>", "yyjpkkddj", { noremap = true, silent = true})
 
 vim.api.nvim_create_user_command("OpenExplorer", function()
 	local path = vim.fn.expand('%:p:h')
@@ -36,6 +37,7 @@ vim.keymap.set("n", "<C-e>", "<cmd>OpenExplorer<CR>", { noremap = true, silent =
 --Wichwrap
 vim.opt.whichwrap:append("<,>")
 
+
 vim.api.nvim_create_user_command("RunFile", function()
     local ext = vim.fn.expand("%:e")
     if ext == "cs" then
@@ -44,6 +46,14 @@ vim.api.nvim_create_user_command("RunFile", function()
         print("Cannot run file")
     end
 end, {})
+
+vim.api.nvim_create_autocmd("Filetype", {
+	pattern = "netrw",
+	callback = function()
+		vim.opt_local.number = true
+		vim.opt_local.relativenumber = true
+	end
+})
 
 
 require("packer")
