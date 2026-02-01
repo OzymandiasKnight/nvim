@@ -24,8 +24,20 @@ require("lazy").setup({
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"L3MON4D3/LuaSnip",
-		}
+		},
+	},
+	{
+	  "jiaoshijie/undotree",
+	  opts = {
+	  },
+	  keys = {
+		{ "<leader>u", "<cmd>lua require('undotree').toggle()<cr>" },
+	  },
 	}
 })
+
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+
 require("lsp")
 require("setup_harpoon")
+require("undotree")
