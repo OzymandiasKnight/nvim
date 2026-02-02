@@ -1,24 +1,9 @@
-vim.lsp.config.csharp_ls = {
-	cmd = { 'csharp-ls' },
-	filetypes = { 'cs' },
-	root_patterns = { 'csproj', "sln" }
-}
-
-vim.lsp.enable('csharp_ls')
-
-vim.lsp.config.intelephense = {
-	cmd = { "intelephense", "--stdio"},
-	filetypes = { "php" },
-	root_makers = {".git", "composer.json"}
-}
-
-vim.lsp.enable('intelephense')
-
+--Servers setup
+--Lsp Keymap
 vim.keymap.set('n', '<leader>z', '<cmd>lua vim.diagnostic.open_float()<cr>')
 vim.keymap.set('n', '<leader>d', vim.lsp.buf.hover, { desc = 'Hover documentation' })
 
 vim.o.signcolumn = 'yes'
-
 
 local cmp = require("cmp")
 
