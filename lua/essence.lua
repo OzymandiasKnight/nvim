@@ -1,3 +1,7 @@
+function playkeys(commands)
+	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(commands, true, false, true), "n", false)
+end
+
 local opts = { noremap = true, silent = true}
 
 --Explorer
@@ -21,6 +25,7 @@ vim.keymap.set("n", "<Tab>", "v>gv<Esc>", opts )
 vim.keymap.set("n", "<S-Tab>", "v<gv<Esc>", opts )
 
 --Move with arrows
+vim.keymap.set({"n"}, "<A-Up>", "yyPjddk", opts )
 vim.keymap.set({"n"}, "<A-Up>", "yykkpjjddkk", opts )
 vim.keymap.set({"n"}, "<A-Down>", "yyjpkkddj", opts )
 vim.keymap.set({"v"}, "<A-Up", "ygvdkp", opts )
@@ -30,3 +35,12 @@ vim.keymap.set("n", "<C-w><C-Up>", "<C-w><Up>", opts)
 vim.keymap.set("n", "<C-w><C-Down>", "<C-w><Down>", opts)
 vim.keymap.set("n", "<C-w><C-Left>", "<C-w><Left>", opts)
 vim.keymap.set("n", "<C-w><C-Right>", "<C-w><Right>", opts)
+
+
+vim.keymap.set("n", "<leader>c", function()
+	local ext = vim.fn.expand("%:e")
+
+	if ext == "xaml" then
+		playkeys("_i<!--<Esc>g_a--><Esc>")
+	end
+end )

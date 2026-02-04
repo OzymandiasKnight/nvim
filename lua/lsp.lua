@@ -1,4 +1,8 @@
 --Servers setup
+local csharp = require('lsp.csharp')
+vim.lsp.config('csharp-ls', csharp)
+vim.lsp.enable('csharp-ls')
+
 --Lsp Keymap
 vim.keymap.set('n', '<leader>z', '<cmd>lua vim.diagnostic.open_float()<cr>')
 vim.keymap.set('n', '<leader>d', vim.lsp.buf.hover, { desc = 'Hover documentation' })

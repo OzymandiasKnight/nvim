@@ -27,13 +27,16 @@ require("lazy").setup({
 		},
 	},
 	{
-	  "jiaoshijie/undotree",
-	  opts = {
-	  },
-	  keys = {
-		{ "<leader>u", "<cmd>lua require('undotree').toggle()<cr>" },
-	  },
-	}
+		"jiaoshijie/undotree",
+		opts = {},
+		keys = {
+			{ "<leader>u", "<cmd>lua require('undotree').toggle()<cr>" },
+		},
+	},
+})
+
+vim.filetype.add({
+  extension = { xaml = "xml" },
 })
 
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
