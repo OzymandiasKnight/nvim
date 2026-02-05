@@ -33,6 +33,9 @@ require("lazy").setup({
 			{ "<leader>u", "<cmd>lua require('undotree').toggle()<cr>" },
 		},
 	},
+	{
+		"tpope/vim-fugitive"	
+	},
 })
 
 vim.filetype.add({

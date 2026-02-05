@@ -10,6 +10,8 @@ require("essence")
 
 vim.api.nvim_create_user_command("OpenExplorer", function()
 	local path = vim.fn.expand('%:p:h')
+	vim.cmd("cd " .. path)
+	path = vim.fn.getcwd()
 	vim.fn.jobstart({ "cmd.exe", "/C", "start", "explorer.exe", path}, {detach = true})
 end, {})
 
@@ -26,6 +28,7 @@ vim.opt.whichwrap:append("<,>")
 vim.api.nvim_create_user_command("RunFile", function()
 	local ext = vim.fn.expand("%:e")
 	local path = vim.fn.expand("%:p:h")
+	vim.cmd(":!cd " .. path)
 	if ext == "cs" then
     	vim.fn.jobstart({"dotnet", "run"}, {cwd = path, detach = false})
 	else
