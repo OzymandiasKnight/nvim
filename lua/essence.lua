@@ -11,9 +11,12 @@ vim.keymap.set({"n", "v"}, "<C-c>", '"+ygvd', opts)
 --Copy
 vim.keymap.set({"n", "v"}, "<C-c>", '"+y', opts )
 vim.keymap.set({"i"}, "<C-c>", '<Esc>g_v_"+y', opts )
+--Select All
+vim.keymap.set({"n"}, "<C-a>", '<Esc>gg_vGg_', opts )
 
 --Save
 vim.keymap.set({"n","v"}, "<C-s>", ":w<CR>")
+
 --Paste
 vim.keymap.set({"n","v"}, "<C-v>", '"+p', opts )
 vim.keymap.set({"i"}, "<C-v>", '<Esc>"+p<Esc>a', opts )
@@ -35,7 +38,6 @@ vim.keymap.set("n", "<C-w><C-Up>", "<C-w><Up>", opts)
 vim.keymap.set("n", "<C-w><C-Down>", "<C-w><Down>", opts)
 vim.keymap.set("n", "<C-w><C-Left>", "<C-w><Left>", opts)
 vim.keymap.set("n", "<C-w><C-Right>", "<C-w><Right>", opts)
-
 
 vim.keymap.set("n", "<leader>c", function()
 	local ext = vim.fn.expand("%:e")

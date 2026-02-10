@@ -36,6 +36,30 @@ require("lazy").setup({
 	{
 		"tpope/vim-fugitive"	
 	},
+	{
+		"rmagatti/auto-session",
+		lazy = false,
+		opts = {
+			auto_restore_enabled = true,
+			auto_save_enabled = true,
+		}
+	},
+	{
+		"nvim-tree/nvim-tree.lua",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		opts = {
+			renderer = {
+				icons = {
+					show = {
+						file = false,
+						folder = false,
+						folder_arrow = false,
+						git = false,
+					}
+				}
+			}
+		}
+	}
 })
 
 vim.filetype.add({
