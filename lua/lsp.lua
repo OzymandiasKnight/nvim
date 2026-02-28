@@ -1,7 +1,13 @@
 --Servers setup
-local csharp = require('lsp.csharp')
-vim.lsp.config('csharp-ls', csharp)
-vim.lsp.enable('csharp-ls')
+lsp_list = {'csharp', 'php', 'python', 'c'}
+
+for lsp_id = 1, #lsp_list do
+	local lsp_name = lsp_list[lsp_id]
+	local lsp_config = require('lsp.'..lsp_name)
+	vim.lsp.config(lsp_name, lsp_config)
+	vim.lsp.enable(lsp_name)
+end
+
 
 --Lsp Keymap
 vim.keymap.set('n', '<leader>z', '<cmd>lua vim.diagnostic.open_float()<cr>')

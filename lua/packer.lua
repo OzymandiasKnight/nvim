@@ -37,29 +37,10 @@ require("lazy").setup({
 		"tpope/vim-fugitive"	
 	},
 	{
-		"rmagatti/auto-session",
-		lazy = false,
-		opts = {
-			auto_restore_enabled = true,
-			auto_save_enabled = true,
-		}
+	  "sphamba/smear-cursor.nvim",
+	  opts = {},
 	},
-	{
-		"nvim-tree/nvim-tree.lua",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		opts = {
-			renderer = {
-				icons = {
-					show = {
-						file = false,
-						folder = false,
-						folder_arrow = false,
-						git = false,
-					}
-				}
-			}
-		}
-	}
+
 })
 
 vim.filetype.add({
@@ -67,6 +48,12 @@ vim.filetype.add({
 })
 
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+
+require("smear_cursor").setup({
+	stiffness = 0.8,
+	trailing_stiffness = 0.5,
+	distance_stop_animating = 0.5,
+})
 
 require("lsp")
 require("setup_harpoon")
