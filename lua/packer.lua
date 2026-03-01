@@ -33,13 +33,32 @@ require("lazy").setup({
 			{ "<leader>u", "<cmd>lua require('undotree').toggle()<cr>" },
 		},
 	},
+	--Github
 	{
 		"tpope/vim-fugitive"	
 	},
 	{
-	  "sphamba/smear-cursor.nvim",
-	  opts = {},
+		"sphamba/smear-cursor.nvim",
+		opts = {
+			smear_insert_mode = false,
+			stiffness = 0.8,
+			trailing_stiffness = 0.5,
+			distance_stop_animating = 0.5,
+			cursor_color = "#ffffff"
+		}
 	},
+	--Latex
+	{
+		"lervag/vimtex",
+		version = "*",
+		lazy = false,
+		init = function()
+			vim.g.vimtex_view_method = "general"
+			vim.g.vimtex_view_general_viewer = "C:/Users/ozyma/AppData/Local/SumatraPDF/SumatraPDF.exe"
+			vim.g.vimtex_view_general_options = "-reuse-instance -forward-search @tex @line @pdf"
+			vim.g.vimtex_view_general_options_latexmk = "-reuse-instance -forward-search @tex @line @pdf"
+		end,
+	}
 
 })
 
@@ -53,6 +72,7 @@ require("smear_cursor").setup({
 	stiffness = 0.8,
 	trailing_stiffness = 0.5,
 	distance_stop_animating = 0.5,
+	cursor_color = "#ffffff"
 })
 
 require("lsp")

@@ -1,5 +1,5 @@
 --Servers setup
-lsp_list = {'csharp', 'php', 'python', 'c'}
+lsp_list = {'csharp', 'php', 'python', 'c', 'latex'}
 
 for lsp_id = 1, #lsp_list do
 	local lsp_name = lsp_list[lsp_id]
