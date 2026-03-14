@@ -19,6 +19,7 @@ vim.api.nvim_create_autocmd("Filetype", {
 	callback = function()
 		vim.opt_local.number = true
 		vim.opt_local.relativenumber = true
+		vim.keymap.set("n", "gg", "9G", { buffer = true, silent = true})
 	end
 })
 
@@ -29,6 +30,8 @@ vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
 	end
 })
 vim.cmd(':set title "."')
+vim.g.netrw_list_hide = [[^\.\/$]]
+vim.g.netrw_hide = 1
 
 vim.api.nvim_create_autocmd("VimEnter", {
     callback = cleanup_shada_tmp,

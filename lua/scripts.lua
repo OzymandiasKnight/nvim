@@ -76,6 +76,11 @@ function setComment()
 			playkeys("<Esc>`<_i<!--<Esc>`>g_a--><Esc>gv")
 		end
 	end
+	if ext == "py" then
+		if mode == "n" then
+			playkeys("_i#<Esc>")
+		end
+	end
 end
 
 --RunFile
