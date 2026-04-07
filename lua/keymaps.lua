@@ -12,6 +12,10 @@ vim.keymap.set({"v"}, "<C-c>", '"+y', opts)
 vim.keymap.set({"i"}, "<C-c>", '<Esc>g_v_"+y', opts)
 vim.keymap.set({"n"}, "<C-c>", 'g_v_"+y', opts)
 
+--Increment
+vim.keymap.set({"n"}, "<Space>+", '<C-a>', opts)
+vim.keymap.set({"n"}, "<Space>-", '<C-x>', opts)
+
 --Select All
 vim.keymap.set({"n"}, "<C-a>", '<Esc>gg_vGg_', opts)
 
@@ -41,8 +45,11 @@ vim.keymap.set("n", "<C-w><C-Left>", "<C-w><Left>", opts)
 vim.keymap.set("n", "<C-w><C-Right>", "<C-w><Right>", opts)
 
 --Tabs
-vim.keymap.set("v", "<leader>t", "<cmd>Texplore<CR>", opts)
-vim.keymap.set("v", "<leader>T", "<cmd>bd<CR>", opts)
+vim.keymap.set("n", "<leader>t", "<cmd>Texplore<CR>", opts)
+vim.keymap.set("n", "<leader>T", "<cmd>bd<CR>", opts)
+vim.keymap.set("n", "<Space><Space>", "gt", opts)
+vim.keymap.set("n", "gt", "gT", opts)
+vim.keymap.set("n", "gT", "gt", opts)
 
 --Scripts
 	--Explorer

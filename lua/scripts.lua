@@ -2,6 +2,19 @@ function playkeys(commands)
 	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(commands, true, false, true), "n", false)
 end
 
+function focus()
+	local hl = vim.api.nvim_get_hl(0, {name = "Normal"})
+	local smear = require("smear_cursor")
+
+	if (hl.bg) then
+		vim.api.nvim_set_hl(0, "Normal", { bg = "none"})
+		smear.disable = false
+	else
+		vim.api.nvim_set_hl(0, "Normal", { bg = "#000000"})
+		smear.disable = true
+	end
+end
+
 function get_dir_files(path)
 	local files = {}
 	local handle = vim.loop.fs_scandir(path)
@@ -69,7 +82,7 @@ function setComment()
 	local mode = vim.api.nvim_get_mode()["mode"]
 	
 	--Xaml Comments
-	if ext == "xaml" then
+	if ext == "xaml" or ext == "html" then
 		if mode == "n" then
 			playkeys("_i<!--<Esc>g_a--><Esc>")
 		elseif mode == "v" then
@@ -81,6 +94,11 @@ function setComment()
 			playkeys("_i#<Esc>")
 		end
 	end
+	if ext == "c" then
+		if mode == "n" then
+			playkeys("_i//<Esc>")
+		end
+	end
 end
 
 --RunFile
@@ -89,17 +107,17 @@ vim.api.nvim_create_user_command("RunFile",function()
 	local name = vim.fn.expand("%")
     local path = vim.fn.expand("%:p:h")
     vim.cmd(":!cd " .. path)
-    if ext == "cs" then
+    if ext == "cs" or ext == "xaml" then
         vim.cmd("!dotnet run")
         --vim.fn.jobstart({"dotnet", "run"}, {cwd = path, detach = false})
-    elseif ext == "c" then
+    elseif (ext == "c" or ext == "h") then
         local build_cmd = ""
 		local files = get_dir_files_list(path,".c")
 		for id=1, #files do
 			build_cmd = build_cmd..files[id].." "
 		end
 		vim.cmd("!gcc -o prgm "..build_cmd)
-        vim.cmd("!prgm.exe")
+        vim.fn.jobstart({"cmd.exe","/C","cd /d"..path.." && prgm.exe"}, {detach=true})
 	elseif ext == "py" then
 		vim.cmd("!python "..name)
 	elseif ext == "tex" then

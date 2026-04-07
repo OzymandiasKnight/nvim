@@ -13,6 +13,9 @@ local function SwitchRelativeLines()
 	vim.opt.nu = not vim.opt.nu
 end
 
+vim.api.nvim_set_hl(0, "Normal", { bg = "#000000"})
+
+
 --Wichwrap
 vim.api.nvim_create_autocmd("Filetype", {
 	pattern = "netrw",

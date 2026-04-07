@@ -59,7 +59,6 @@ require("lazy").setup({
 			vim.g.vimtex_view_general_options_latexmk = "-reuse-instance -forward-search @tex @line @pdf"
 		end,
 	}
-
 })
 
 vim.filetype.add({
