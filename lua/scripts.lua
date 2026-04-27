@@ -2,6 +2,18 @@ function playkeys(commands)
 	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(commands, true, false, true), "n", false)
 end
 
+
+function openFolder()
+	print(vim.bo.filetype)
+	if vim.bo.filetype == "netrw" then
+		print("up")
+		vim.fn.feedkeys("-")
+	else
+		vim.cmd.Ex()
+	end
+end
+
+
 function focus()
 	local hl = vim.api.nvim_get_hl(0, {name = "Normal"})
 	local smear = require("smear_cursor")

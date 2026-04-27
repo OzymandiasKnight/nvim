@@ -1,7 +1,6 @@
 local opts = { noremap = true, silent = true}
-
 --Explorer
-vim.keymap.set("n", "<leader>v", vim.cmd.Ex, opts)
+vim.keymap.set("n", "<leader>v", openFolder, opts)
 vim.keymap.set("n", "<leader>xx" , "<cmd>:Vex<CR><C-w>50<iii<C-w>l<cmd>:Ex<CR>C", opts)
 
 --Cut
@@ -60,3 +59,4 @@ vim.keymap.set("n", "<leader>r", replaceAsk, opts)
 vim.keymap.set({"n", "v"}, "<leader>c", setComment, opts)
 	--Run code
 vim.keymap.set({"n"}, "<F5>", "<cmd>RunFile<CR>", opts)
+

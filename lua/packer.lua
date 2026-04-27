@@ -58,6 +58,12 @@ require("lazy").setup({
 			vim.g.vimtex_view_general_options = "-reuse-instance -forward-search @tex @line @pdf"
 			vim.g.vimtex_view_general_options_latexmk = "-reuse-instance -forward-search @tex @line @pdf"
 		end,
+	},
+	{
+		'nvim-telescope/telescope.nvim', version = '*',
+		dependencies = {
+			'nvim-lua/plenary.nvim',
+		}
 	}
 })
 
@@ -67,12 +73,8 @@ vim.filetype.add({
 
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 
-require("smear_cursor").setup({
-	stiffness = 0.8,
-	trailing_stiffness = 0.5,
-	distance_stop_animating = 0.5,
-	cursor_color = "#ffffff"
-})
+
+vim.g.lazyvim_ts_lsp = "vtsls"
 
 require("lsp")
 require("setup_harpoon")
