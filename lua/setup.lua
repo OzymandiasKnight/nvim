@@ -25,4 +25,9 @@ vim.keymap.set('n', '<leader>fg', function()
 	})
 end)
 
+
+vim.keymap.set('n', '<leader>fc', function()
+	builtin.live_grep()
+end)
+
 vim.keymap.set("n", "<leader>ff", builtin.find_files, {})

@@ -23,6 +23,8 @@ vim.api.nvim_create_autocmd("Filetype", {
 		vim.opt_local.number = true
 		vim.opt_local.relativenumber = true
 		vim.keymap.set("n", "gg", "9G", { buffer = true, silent = true})
+		vim.keymap.set("n", "<Right>", "<Down>$", { buffer = true, silent = true})
+		vim.keymap.set("n", "<Left>", "<Up>$", { buffer = true, silent = true})
 	end
 })
 

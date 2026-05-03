@@ -4,9 +4,7 @@ end
 
 
 function openFolder()
-	print(vim.bo.filetype)
 	if vim.bo.filetype == "netrw" then
-		print("up")
 		vim.fn.feedkeys("-")
 	else
 		vim.cmd.Ex()
@@ -94,7 +92,7 @@ function setComment()
 	local mode = vim.api.nvim_get_mode()["mode"]
 	
 	--Xaml Comments
-	if ext == "xaml" or ext == "html" then
+	if ext == "xaml" or ext == "html" or ext == "php" then
 		if mode == "n" then
 			playkeys("_i<!--<Esc>g_a--><Esc>")
 		elseif mode == "v" then
