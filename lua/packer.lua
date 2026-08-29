@@ -54,7 +54,7 @@ require("lazy").setup({
 		lazy = false,
 		init = function()
 			vim.g.vimtex_view_method = "general"
-			vim.g.vimtex_view_general_viewer = "C:/Users/ozyma/AppData/Local/SumatraPDF/SumatraPDF.exe"
+			vim.g.vimtex_view_general_viewer = pdf_viewer
 			vim.g.vimtex_view_general_options = "-reuse-instance -forward-search @tex @line @pdf"
 			vim.g.vimtex_view_general_options_latexmk = "-reuse-instance -forward-search @tex @line @pdf"
 		end,
@@ -64,7 +64,8 @@ require("lazy").setup({
 		dependencies = {
 			'nvim-lua/plenary.nvim',
 		}
-	}
+	},
+	{'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'}
 })
 
 vim.filetype.add({

@@ -119,7 +119,8 @@ vim.api.nvim_create_user_command("RunFile",function()
     vim.cmd(":!cd " .. path)
     if ext == "cs" or ext == "xaml" then
         vim.cmd("!dotnet run")
-        --vim.fn.jobstart({"dotnet", "run"}, {cwd = path, detach = false})
+	elseif ext == "ps1" then
+		vim.cmd("!powershell.exe "..name)
     elseif (ext == "c" or ext == "h") then
         local build_cmd = ""
 		local files = get_dir_files_list(path,".c")

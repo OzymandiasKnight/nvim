@@ -32,10 +32,8 @@ vim.keymap.set("n", "<Tab>", "v>gv<Esc>", opts)
 vim.keymap.set("n", "<S-Tab>", "v<gv<Esc>", opts)
 
 --Move with arrows
-vim.keymap.set({"n"}, "<A-Up>", "yyPjddk", opts)
-vim.keymap.set({"n"}, "<A-Up>", "yykkpjjddkk", opts)
-vim.keymap.set({"n"}, "<A-Down>", "yyjpkkddj", opts)
-vim.keymap.set({"v"}, "<A-Up", "ygvdkp", opts)
+vim.keymap.set({"n"}, "<A-Up>", "ddkP", opts)
+vim.keymap.set({"n"}, "<A-Down>", "ddp", opts) --Work
 
 --Better window movements
 vim.keymap.set("n", "<C-w><C-Up>", "<C-w><Up>", opts)
@@ -45,10 +43,12 @@ vim.keymap.set("n", "<C-w><C-Right>", "<C-w><Right>", opts)
 
 --Tabs
 vim.keymap.set("n", "<leader>t", "<cmd>Texplore<CR>", opts)
-vim.keymap.set("n", "<leader>T", "<cmd>bd<CR>", opts)
-vim.keymap.set("n", "<Space><Space>", "gt", opts)
-vim.keymap.set("n", "gt", "gT", opts)
-vim.keymap.set("n", "gT", "gt", opts)
+vim.keymap.set("n", "<leader>q", "<cmd>bd<CR>", opts)
+
+vim.keymap.set("n", "<Space><Space>", "<cmd>BufferLineCycleNext<CR>", opts)
+vim.keymap.set("n", "<Space>b", "<cmd>BufferLineCyclePrev<CR>", opts)
+vim.keymap.set("n", "<Space>z", "gt", opts)
+vim.keymap.set("n", "<Space>s", "gT", opts)
 
 --Scripts
 	--Explorer

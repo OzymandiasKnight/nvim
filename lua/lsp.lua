@@ -12,6 +12,7 @@ end
 --Lsp Keymap
 vim.keymap.set('n', '<leader>z', '<cmd>lua vim.diagnostic.open_float()<cr>')
 vim.keymap.set('n', '<leader>d', vim.lsp.buf.hover, { desc = 'Hover documentation' })
+vim.keymap.set('n', '<leader>g', vim.lsp.buf.definition, { desc = 'Jump definition' })
 
 vim.o.signcolumn = 'yes'
 

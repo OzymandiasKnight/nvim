@@ -7,6 +7,8 @@ require("smear_cursor").setup({
 
 local telescope = require("telescope")
 local builtin = require("telescope.builtin")
+local rose = require("rose-pine.palette")
+
 
 telescope.setup{
 	defaults = {
@@ -22,6 +24,7 @@ telescope.setup{
 vim.keymap.set('n', '<leader>fg', function()
 	builtin.live_grep({
 		default_text = "<<<<<<<|=======|>>>>>>>",
+		additional_args = {"--hidden"}
 	})
 end)
 
@@ -29,5 +32,25 @@ end)
 vim.keymap.set('n', '<leader>fc', function()
 	builtin.live_grep()
 end)
+
+vim.opt.termguicolors = true
+require("bufferline").setup({
+	options = {
+		mode = "tabs",
+		numbers = "ordinal",
+		duplicates_across_groups = false,
+		name_formatter = function(tab)
+			return tab.name
+		end,
+	},
+	highlights = {
+		tab = {
+			fg = rose.subtle,
+		},
+		tab_selected = {
+			fg = rose.text,
+		},
+	},
+})
 
 vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
