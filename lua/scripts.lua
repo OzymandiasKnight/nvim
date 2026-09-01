@@ -146,4 +146,18 @@ vim.api.nvim_create_user_command("OpenExplorer", function()
 	vim.fn.jobstart({ "cmd.exe", "/C", "start", "explorer.exe", path}, {detach = true})
 end, {})
 
+--Auto cmds
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = "*.tex",
+  callback = function()
+    vim.cmd("VimtexCompile")
+  end,
+})
+
+vim.api.nvim_create_autocmd("BufDelete", {
+  pattern = "*.tex",
+  callback = function()
+    vim.cmd("VimtexStop")
+  end,
+})
 

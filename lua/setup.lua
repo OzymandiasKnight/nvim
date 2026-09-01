@@ -9,7 +9,6 @@ local telescope = require("telescope")
 local builtin = require("telescope.builtin")
 local rose = require("rose-pine.palette")
 
-
 telescope.setup{
 	defaults = {
 		find_command = { "rg", "--files"},
