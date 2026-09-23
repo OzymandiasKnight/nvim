@@ -36,6 +36,16 @@ vim.api.nvim_create_autocmd("VimEnter", {
 	end
 })
 
+vim.api.nvim_create_autocmd("DirChanged", {
+  callback = function()
+    vim.defer_fn(function()
+      if vim.fn.getcmdwintype() == "" then
+        vim.cmd("Ex")
+      end
+    end, 100)
+  end,
+})
+
 vim.api.nvim_create_autocmd("Filetype", {
 	pattern = "netrw",
 	callback = function()
