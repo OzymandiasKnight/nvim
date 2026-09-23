@@ -30,7 +30,9 @@ vim.api.nvim_create_autocmd("VimEnter", {
 			end
 		end
 
-		--vim.cmd("NeovimProjectDiscover")
+		vim.schedule(function()
+			  vim.cmd("NeovimProjectDiscover")
+		end)
 	end
 })
 
