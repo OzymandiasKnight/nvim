@@ -1,6 +1,9 @@
 -- Lazy.nvim setup
 local lazypath = vim.fn.stdpath("config") .. "/lazy/lazy.nvim"
 vim.opt.runtimepath:prepend(lazypath)
+
+require("config")
+
 require("lazy").setup({
 	--Colorscheme
 	{
@@ -54,18 +57,39 @@ require("lazy").setup({
 		lazy = false,
 		init = function()
 			vim.g.vimtex_view_method = "general"
-			vim.g.vimtex_view_general_viewer = pdf_viewer
+			vim.g.vimtex_view_general_viewer = cfg_pdf_viewer
 			vim.g.vimtex_view_general_options = "-reuse-instance -forward-search @tex @line @pdf"
 			vim.g.vimtex_view_general_options_latexmk = "-reuse-instance -forward-search @tex @line @pdf"
 		end,
 	},
+	{
+	  "coffebar/neovim-project",
+	  opts = {
+
+		projects = cfg_projects,
+		picker = {
+		  type = "telescope",
+		}
+	  },
+	  init = function()
+		vim.opt.sessionoptions:append("globals") -- save global variables that start with an uppercase letter and contain at least one lowercase letter.
+	  end,
+	  last_session_on_startup = true,
+	  dependencies = {
+		{ "nvim-lua/plenary.nvim" },
+		{ "nvim-telescope/telescope.nvim" },
+		{ "Shatur/neovim-session-manager" },
+	  },
+	  lazy = false,
+	  priority = 100,
+	},
+	--Telescope search
 	{
 		'nvim-telescope/telescope.nvim', version = '*',
 		dependencies = {
 			'nvim-lua/plenary.nvim',
 		}
 	},
-	{'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'}
 })
 
 vim.filetype.add({
@@ -78,5 +102,4 @@ vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.g.lazyvim_ts_lsp = "vtsls"
 
 require("lsp")
-require("setup_harpoon")
 require("undotree")

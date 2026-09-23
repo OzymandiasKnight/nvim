@@ -43,12 +43,12 @@ vim.keymap.set("n", "<C-w><C-Right>", "<C-w><Right>", opts)
 
 --Tabs
 vim.keymap.set("n", "<leader>t", "<cmd>Texplore<CR>", opts)
+vim.keymap.set("n", "<leader>o", "<cmd>Texplore<CR>", opts)
 vim.keymap.set("n", "<leader>q", "<cmd>bd<CR>", opts)
 
-vim.keymap.set("n", "<Space><Space>", "<cmd>BufferLineCycleNext<CR>", opts)
-vim.keymap.set("n", "<Space>b", "<cmd>BufferLineCyclePrev<CR>", opts)
-vim.keymap.set("n", "<Space>z", "gt", opts)
-vim.keymap.set("n", "<Space>s", "gT", opts)
+vim.keymap.set("n", "<Space><Space>", "gt", opts)
+vim.keymap.set("n", "<Space><Tab>", "gT", opts)
+
 
 --Scripts
 	--Explorer

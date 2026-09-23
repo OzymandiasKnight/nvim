@@ -67,22 +67,6 @@ function replaceAsk()
     end
 end
 
-function cleanup_shada_tmp()
-    local shada_dir = vim.fn.stdpath('data') .. '/shada'
-    local handle = vim.loop.fs_scandir(shada_dir)
-    
-    if handle then
-        while true do
-            local name, type = vim.loop.fs_scandir_next(handle)
-            if not name then break end
-            
-            if type == "file" and name:match("%.tmp%.") then
-                local filepath = shada_dir .. '/' .. name
-                vim.loop.fs_unlink(filepath)
-            end
-        end
-    end
-end
 
 
 local opt = { noremap = true, silent = true}
@@ -122,13 +106,7 @@ vim.api.nvim_create_user_command("RunFile",function()
 	elseif ext == "ps1" then
 		vim.cmd("!powershell.exe "..name)
     elseif (ext == "c" or ext == "h") then
-        local build_cmd = ""
-		local files = get_dir_files_list(path,".c")
-		for id=1, #files do
-			build_cmd = build_cmd..files[id].." "
-		end
-		vim.cmd("!gcc -o prgm "..build_cmd)
-        vim.fn.jobstart({"cmd.exe","/C","cd /d"..path.." && prgm.exe"}, {detach=true})
+		vim.cmd("!make")
 	elseif ext == "py" then
 		vim.cmd("!python "..name)
 	elseif ext == "tex" then
@@ -145,19 +123,4 @@ vim.api.nvim_create_user_command("OpenExplorer", function()
 	path = vim.fn.getcwd()
 	vim.fn.jobstart({ "cmd.exe", "/C", "start", "explorer.exe", path}, {detach = true})
 end, {})
-
---Auto cmds
-vim.api.nvim_create_autocmd("BufEnter", {
-  pattern = "*.tex",
-  callback = function()
-    vim.cmd("VimtexCompile")
-  end,
-})
-
-vim.api.nvim_create_autocmd("BufDelete", {
-  pattern = "*.tex",
-  callback = function()
-    vim.cmd("VimtexStop")
-  end,
-})
 
